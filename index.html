@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anime Primer</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com/3.4.10?plugins=typography"></script>
+  <style>
+    .jp { font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif; }
+    /* Flashcard flip */
+    .flip { perspective: 1200px; cursor: pointer; }
+    .flip-inner { position: relative; min-height: 18rem; transition: transform .5s; transform-style: preserve-3d; }
+    .flip.flipped .flip-inner { transform: rotateY(180deg); }
+    .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .flip-back { transform: rotateY(180deg); }
+    @media (prefers-reduced-motion: reduce) { .flip-inner { transition: none; } }
+  </style>
+</head>
+<body class="min-h-screen bg-base-200">
+  <div class="navbar bg-base-100 shadow-sm sticky top-0 z-40">
+    <div class="navbar-start">
+      <div class="dropdown md:hidden">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-sm">☰</div>
+        <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-48 p-2 shadow">
+          <li><a href="#/flash">Flashcards</a></li>
+          <li><a href="#/quiz">Multiple choice</a></li>
+          <li><a href="#/type">Type it</a></li>
+          <li><a href="#/progress">Progress</a></li>
+        </ul>
+      </div>
+      <a href="#/" class="btn btn-ghost text-lg font-bold">🎌 Anime Primer</a>
+    </div>
+    <div class="navbar-center hidden md:flex">
+      <ul class="menu menu-horizontal px-1 gap-1">
+        <li><a href="#/" data-nav="">Learn</a></li>
+        <li><a href="#/flash" data-nav="flash">Flashcards</a></li>
+        <li><a href="#/quiz" data-nav="quiz">Multiple choice</a></li>
+        <li><a href="#/type" data-nav="type">Type it</a></li>
+        <li><a href="#/progress" data-nav="progress">Progress</a></li>
+      </ul>
+    </div>
+    <div class="navbar-end"><button id="themebtn" class="btn btn-ghost btn-sm" aria-label="Toggle theme">🌙</button></div>
+  </div>
+
+  <main id="app" class="max-w-5xl mx-auto px-4 py-8"></main>
+
+  <footer class="text-center text-xs opacity-50 pb-8 px-4">
+    Progress is saved in this browser (localStorage). Use Progress → Export to back it up.
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
